@@ -72,7 +72,7 @@ This project demonstrates **Object-Oriented Programming (OOP)** principles and m
 
 ### OOP Principles Applied
 
-#### 1. **Inheritance **
+#### 1. Inheritance
 ```csharp
 ViewModelBase (abstract base class)
     ↓
@@ -83,7 +83,7 @@ ViewModelBase (abstract base class)
 ```
 All ViewModels inherit from `ViewModelBase` (which extends `ObservableObject`), providing automatic property change notification.
 
-#### 2. **Polymorphism **
+#### 2. Polymorphism
 ```csharp
 IRepository<T> (interface)
     ↓
@@ -93,13 +93,13 @@ IRepository<T> (interface)
 ```
 Same interface contract, different implementations for each entity type.
 
-#### 3. **Encapsulation **
+#### 3. Encapsulation
 - **Private fields** (`_products`, `_service`, `_db`) hide implementation details
 - **Public properties** expose controlled access
 - **Computed properties** (`Total`, `Change`) encapsulate business logic
 - **Auto-properties** with getter/setter control
 
-#### 4. **Abstraction **
+#### 4. Abstraction
 ```csharp
 IRefreshable (interface)
     ↓

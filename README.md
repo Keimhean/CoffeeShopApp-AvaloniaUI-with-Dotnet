@@ -431,7 +431,7 @@ Project Link: [https://github.com/Keimhean/CoffeeShopApp-AvaloniaUI-with-Dotnet]
 
 ##  Support
 
-If you find this project helpful, please give it a ⭐ on GitHub!
+If you find this project helpful, please give it a  on GitHub!
 
 ---
 

@@ -12,7 +12,7 @@ A modern, full-featured Point-of-Sale (POS) system for coffee shops built with *
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 ### Main Interface - Product Management
 ![Product List](Docs/screenshots/product-list.png)
@@ -28,45 +28,45 @@ A modern, full-featured Point-of-Sale (POS) system for coffee shops built with *
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🛍️ Product Management
-- ✅ Add, edit, delete products
-- ✅ Category organization (Coffee, Tea, etc.)
-- ✅ Real-time stock tracking
-- ✅ Price management
-- ✅ Search and filter products
-- ✅ Product icons with visual indicators
+### Product Management
+-  Add, edit, delete products
+-  Category organization (Coffee, Tea, etc.)
+-  Real-time stock tracking
+-  Price management
+-  Search and filter products
+-  Product icons with visual indicators
 
-### 🧾 Order Processing
-- ✅ Create new orders with multiple items
-- ✅ Quantity increment/decrement controls
-- ✅ Automatic total calculation
-- ✅ Tendered amount and change calculation
-- ✅ Order completion with transaction support
-- ✅ Recent orders history with per-order totals
-- ✅ Stock deduction on order completion
-- ✅ Order receipt generation
+###  Order Processing
+-  Create new orders with multiple items
+-  Quantity increment/decrement controls
+-  Automatic total calculation
+-  Tendered amount and change calculation
+-  Order completion with transaction support
+-  Recent orders history with per-order totals
+-  Stock deduction on order completion
+-  Order receipt generation
 
-### 📊 Sales Reporting
-- ✅ Daily sales summary
-- ✅ Revenue and order count tracking
-- ✅ Date range filtering
-- ✅ **Cambodia timezone support** (Asia/Phnom_Penh, UTC+7)
-- ✅ Total revenue and order calculations
-- ✅ Visual sales data presentation
+###  Sales Reporting
+-  Daily sales summary
+-  Revenue and order count tracking
+-  Date range filtering
+-  **Cambodia timezone support** (Asia/Phnom_Penh, UTC+7)
+-  Total revenue and order calculations
+-  Visual sales data presentation
 
-### 🎨 UI/UX
-- ✅ **Liquid glass design** with gradient backgrounds
-- ✅ Modern, responsive layout
-- ✅ Icon-based navigation
-- ✅ Color-coded menu selection (#615FFF)
-- ✅ Smooth hover and click effects
-- ✅ macOS-inspired visual style
+###  UI/UX
+-  **Liquid glass design** with gradient backgrounds
+-  Modern, responsive layout
+-  Icon-based navigation
+-  Color-coded menu selection (#615FFF)
+-  Smooth hover and click effects
+-  macOS-inspired visual style
 
 ---
 
-## 🏗️ Architecture & Design
+##  Architecture & Design
 
 This project demonstrates **Object-Oriented Programming (OOP)** principles and modern software architecture patterns.
 
@@ -108,14 +108,14 @@ IRefreshable (interface)
 ```
 Defines refresh behavior without exposing implementation details.
 
-### 📐 UML Diagrams
+###  UML Diagrams
 
 Complete UML class diagrams are available in the `Docs/` folder:
 
 - **[OOP_Principles_UML.svg](Docs/OOP_Principles_UML.svg)** / **[PNG](Docs/OOP_Principles_UML.png)** - Demonstrates OOP principles
 - **[CoffeeShopApp_UML.svg](Docs/CoffeeShopApp_UML.svg)** / **[PNG](Docs/CoffeeShopApp_UML.png)** - Full application architecture
 
-### 🧩 Architecture Layers
+###  Architecture Layers
 
 ```
 ┌─────────────────────────────────────────┐
@@ -133,7 +133,7 @@ Complete UML class diagrams are available in the `Docs/` folder:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - **[Avalonia UI 11.x](https://avaloniaui.net/)** - Cross-platform XAML-based UI framework
@@ -153,7 +153,7 @@ Complete UML class diagrams are available in the `Docs/` folder:
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -163,7 +163,7 @@ Make sure you have the following installed:
 - **[Docker Desktop](https://www.docker.com/products/docker-desktop)** (for SQL Server)
 - **[Git](https://git-scm.com/)** (for cloning the repository)
 
-### 📥 Installation
+###  Installation
 
 #### 1. Clone the repository
 
@@ -213,7 +213,7 @@ The Coffee Shop POS application window should open automatically! 🎉
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 CoffeeShopApp/
@@ -270,7 +270,7 @@ CoffeeShopApp/
 
 ---
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ### Tables
 
@@ -323,7 +323,7 @@ GROUP BY CAST(CreatedAt AS DATE);
 
 ---
 
-## 🔧 Configuration
+##  Configuration
 
 ### Database Connection
 
@@ -351,7 +351,7 @@ public static TimeZoneInfo CambodiaTimeZone =>
 
 ---
 
-## 🧪 Development
+##  Development
 
 ### Building for Release
 
@@ -387,7 +387,7 @@ node convert-svg-to-png.js
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Here's how you can help:
 
@@ -407,13 +407,13 @@ Contributions are welcome! Here's how you can help:
 
 ---
 
-## 📝 License
+##  License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **[Avalonia UI Team](https://avaloniaui.net/)** - For the amazing cross-platform UI framework
 - **[.NET Community](https://dotnet.microsoft.com/)** - For excellent tools and libraries
@@ -421,7 +421,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## 📧 Contact
+##  Contact
 
 **Keimhean** - [@Keimhean](https://github.com/Keimhean)
 
@@ -429,7 +429,7 @@ Project Link: [https://github.com/Keimhean/CoffeeShopApp-AvaloniaUI-with-Dotnet]
 
 ---
 
-## 🌟 Support
+##  Support
 
 If you find this project helpful, please give it a ⭐ on GitHub!
 
@@ -437,7 +437,7 @@ If you find this project helpful, please give it a ⭐ on GitHub!
 
 <div align="center">
 
-### Built with ❤️ using Avalonia UI and .NET 9
+### Built with  using Avalonia UI and .NET 9
 
 **Happy Coding!** ☕
 

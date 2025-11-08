@@ -1,0 +1,24 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:fluent="clr-namespace:Avalonia.Themes.Fluent;assembly=Avalonia.Themes.Fluent"
+             xmlns:vm="using:CoffeeShopApp.ViewModels"
+             xmlns:views="using:CoffeeShopApp.Views"
+             x:Class="CoffeeShopApp.App">
+  <Application.Styles>
+    <fluent:FluentTheme />
+    <StyleInclude Source="avares://CoffeeShopApp/Styles/LiquidGlass.axaml"/>
+  </Application.Styles>
+
+  <!-- Map ViewModels to Views so ContentControl can render VM instances -->
+  <Application.DataTemplates>
+    <DataTemplate DataType="{x:Type vm:ProductListViewModel}">
+      <views:ProductListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:OrderViewModel}">
+      <views:OrderView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ReportViewModel}">
+      <views:ReportView/>
+    </DataTemplate>
+  </Application.DataTemplates>
+</Application>

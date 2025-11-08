@@ -1,0 +1,99 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CoffeeShopApp.Views.OrderView">
+  <Grid ColumnDefinitions="260,*, 380" RowDefinitions="Auto,*,Auto" Margin="12">
+    <TextBlock Grid.ColumnSpan="3" Text="Orders" FontSize="22" FontWeight="Bold" Margin="6,6,6,12"/>
+
+    <!-- New Order card -->
+    <Border Grid.Column="0" Grid.Row="1" Classes="card" Padding="16" Margin="0,0,12,0">
+      <StackPanel Spacing="12">
+        <TextBlock Text="New Order" FontWeight="SemiBold"/>
+        <TextBox Watermark="Enter cashier name" Text="{Binding Cashier}"/>
+
+        <TextBlock Text="Product Selection" FontWeight="SemiBold"/>
+  <ComboBox ItemsSource="{Binding ProductChoices}" SelectedItem="{Binding SelectedProduct}" HorizontalAlignment="Stretch">
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Name}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="8">
+          <Button Width="36" Height="36" Classes="round" Command="{Binding DecrementQtyCmd}">-</Button>
+          <NumericUpDown Minimum="1" Maximum="100" Width="140" Value="{Binding Qty}" HorizontalContentAlignment="Center"/>
+          <Button Width="36" Height="36" Classes="round" Command="{Binding IncrementQtyCmd}">+</Button>
+        </StackPanel>
+
+        <Button Classes="positive" Content="Add to Order" Command="{Binding AddToOrderCmd}" HorizontalAlignment="Stretch"/>
+      </StackPanel>
+    </Border>
+
+    <!-- Middle: Item list -->
+    <Border Grid.Column="1" Grid.Row="1" Classes="card" Padding="16" Margin="0,0,12,0">
+      <StackPanel Spacing="10">
+        <TextBlock Text="New Order" FontWeight="SemiBold"/>
+        <ListBox ItemsSource="{Binding Items}">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Border Classes="card" Margin="6">
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                  <TextBlock Text="{Binding Product.Name}"/>
+                  <TextBlock Grid.Column="1" Text="{Binding Qty, StringFormat='x{0}'}" Margin="10,0"/>
+                  <TextBlock Grid.Column="2" Text="{Binding Subtotal, StringFormat='$ {0:F2}'}"/>
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </StackPanel>
+    </Border>
+
+    <!-- Summary card -->
+    <Border Grid.Column="2" Grid.Row="1" Classes="glass" Padding="16">
+      <StackPanel Spacing="8">
+        <TextBlock Text="Order Summary" FontWeight="SemiBold"/>
+        <TextBlock Text="{Binding Total, StringFormat='Total: $ {0:F2}'}" FontSize="18" FontWeight="Bold"/>
+
+        <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+          <TextBlock Text="Tendered:" VerticalAlignment="Center"/>
+          <NumericUpDown Minimum="0" Maximum="10000" Value="{Binding Tendered}" Width="160"/>
+        </StackPanel>
+
+        <TextBlock Text="{Binding Change, StringFormat='Change: $ {0:F2}'}"/>
+        <TextBlock Foreground="Red" Text="{Binding Error}"/>
+
+        <Button Content="Complete Order" Command="{Binding CompleteCmd}" HorizontalAlignment="Stretch"/>
+
+        <TextBlock Text="Receipt:" FontWeight="SemiBold" Margin="0,8,0,0"/>
+        <TextBlock Text="{Binding CompletedSummary}" TextWrapping="Wrap"/>
+      </StackPanel>
+    </Border>
+
+    <!-- Order History -->
+    <Border Grid.ColumnSpan="3" Grid.Row="2" Classes="card" Padding="16" Margin="0,12,0,0">
+      <StackPanel Spacing="8">
+        <TextBlock Text="Order History" FontWeight="SemiBold"/>
+        <ListBox ItemsSource="{Binding RecentOrders}" Height="160">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Border Background="#7A6CFF" CornerRadius="6" Padding="12" Margin="6">
+                <Grid ColumnDefinitions="*,Auto" >
+                  <StackPanel>
+                    <TextBlock Text="{Binding OrderNumber}" Foreground="White" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding Cashier, StringFormat='Cashier: {0}'}" Foreground="White"/>
+                    <TextBlock Text="{Binding CreatedAtLocalString}" Foreground="White" FontSize="12"/>
+                  </StackPanel>
+                  <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Amount, StringFormat='$ {0:F2}'}" Foreground="White" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding CreatedAtLocal, StringFormat='t'}" Foreground="White" HorizontalAlignment="Right"/>
+                  </StackPanel>
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

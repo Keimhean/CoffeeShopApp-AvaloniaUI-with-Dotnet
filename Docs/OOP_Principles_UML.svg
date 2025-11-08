@@ -1,0 +1,290 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1400">
+  <defs>
+    <style>
+      .title-main { fill: #333; font-family: 'Segoe UI', Arial, sans-serif; font-size: 28px; font-weight: bold; }
+      .title-section { fill: #333; font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; }
+      .class-box { fill: #6E7BFF; stroke: #4A5FFF; stroke-width: 2; }
+      .interface-box { fill: #53EAFD; stroke: #33CADD; stroke-width: 2; }
+      .abstract-box { fill: #FF9F43; stroke: #FF8A1F; stroke-width: 2; }
+      .concrete-box { fill: #28C76F; stroke: #1FA75F; stroke-width: 2; }
+      .text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; }
+      .title { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: bold; }
+      .small { fill: white; font-family: 'Courier New', monospace; font-size: 11px; }
+      .note { fill: #333; font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; font-style: italic; }
+      .line { stroke: #333; stroke-width: 2; fill: none; }
+      .dashed { stroke-dasharray: 5,5; }
+      .highlight { fill: #FFF3CD; stroke: #FFC107; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- Main Title -->
+  <text x="800" y="40" class="title-main" text-anchor="middle">OOP Principles in Coffee Shop Application</text>
+  <text x="800" y="70" class="note" text-anchor="middle">Demonstrating Inheritance, Polymorphism, Encapsulation, and Abstraction</text>
+
+  <!-- ========== 1. INHERITANCE & ABSTRACTION ========== -->
+  <text x="50" y="120" class="title-section">1. Inheritance (ការពន្យល់មរតក) &amp; Abstraction (ការបំបែក)</text>
+  
+  <!-- Base class: ViewModelBase -->
+  <rect x="50" y="140" width="280" height="140" class="abstract-box" rx="8"/>
+  <text x="190" y="165" class="title" text-anchor="middle">&lt;&lt;abstract&gt;&gt;</text>
+  <text x="190" y="185" class="title" text-anchor="middle">ViewModelBase</text>
+  <line x1="50" y1="195" x2="330" y2="195" stroke="white" stroke-width="1"/>
+  <text x="60" y="215" class="small">: ObservableObject</text>
+  <line x1="50" y1="225" x2="330" y2="225" stroke="white" stroke-width="1"/>
+  <text x="60" y="245" class="small"># OnPropertyChanged(name)</text>
+  <text x="60" y="260" class="small"># SetProperty&lt;T&gt;(ref, value)</text>
+
+  <!-- Note box -->
+  <rect x="360" y="140" width="280" height="140" class="highlight" rx="8"/>
+  <text x="500" y="165" class="note" text-anchor="middle" font-weight="bold">OOP: Abstraction</text>
+  <text x="370" y="190" class="note">• ViewModelBase ជា base class</text>
+  <text x="370" y="210" class="note">• ផ្តល់ functionality រួម (common)</text>
+  <text x="370" y="230" class="note">• Child classes មិនចាំបាច់</text>
+  <text x="370" y="250" class="note">  implement property notification</text>
+  <text x="370" y="270" class="note">  ម្តងទៀតទេ (code reuse)</text>
+
+  <!-- Derived classes -->
+  <rect x="50" y="320" width="200" height="100" class="concrete-box" rx="8"/>
+  <text x="150" y="345" class="title" text-anchor="middle">MainViewModel</text>
+  <line x1="50" y1="355" x2="250" y2="355" stroke="white" stroke-width="1"/>
+  <text x="60" y="375" class="small">+ Content: ViewModelBase</text>
+  <text x="60" y="390" class="small">+ ShowProductsCmd</text>
+  <text x="60" y="405" class="small">+ ShowOrdersCmd</text>
+
+  <rect x="280" y="320" width="220" height="100" class="concrete-box" rx="8"/>
+  <text x="390" y="345" class="title" text-anchor="middle">ProductListViewModel</text>
+  <line x1="280" y1="355" x2="500" y2="355" stroke="white" stroke-width="1"/>
+  <text x="290" y="375" class="small">+ Items: ObservableCol.</text>
+  <text x="290" y="390" class="small">+ LoadCmd</text>
+  <text x="290" y="405" class="small">+ AddCmd, DeleteCmd</text>
+
+  <rect x="530" y="320" width="200" height="100" class="concrete-box" rx="8"/>
+  <text x="630" y="345" class="title" text-anchor="middle">OrderViewModel</text>
+  <line x1="530" y1="355" x2="730" y2="355" stroke="white" stroke-width="1"/>
+  <text x="540" y="375" class="small">+ Items: ObservableCol.</text>
+  <text x="540" y="390" class="small">+ CompleteCmd</text>
+  <text x="540" y="405" class="small">+ AddToOrderCmd</text>
+
+  <!-- Inheritance arrows -->
+  <path d="M 150 320 L 150 280" class="line" marker-end="url(#arrow-inherit)"/>
+  <path d="M 390 320 L 220 280" class="line" marker-end="url(#arrow-inherit)"/>
+  <path d="M 630 320 L 250 280" class="line" marker-end="url(#arrow-inherit)"/>
+  
+  <text x="770" y="345" class="note" font-weight="bold">Inheritance:</text>
+  <text x="770" y="365" class="note">ទាំងអស់ extend</text>
+  <text x="770" y="385" class="note">ViewModelBase</text>
+  <text x="770" y="405" class="note">→ មរតកគ្រប់ property</text>
+
+  <!-- ========== 2. POLYMORPHISM ========== -->
+  <text x="50" y="480" class="title-section">2. Polymorphism (ពហុរូបភាព) - Interface Implementation</text>
+
+  <!-- IRepository Interface -->
+  <rect x="50" y="500" width="280" height="180" class="interface-box" rx="8"/>
+  <text x="190" y="525" class="title" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+  <text x="190" y="545" class="title" text-anchor="middle">IRepository&lt;T&gt;</text>
+  <line x1="50" y1="555" x2="330" y2="555" stroke="white" stroke-width="1"/>
+  <text x="60" y="575" class="small">+ GetAllAsync(): Task&lt;List&lt;T&gt;&gt;</text>
+  <text x="60" y="590" class="small">+ GetByIdAsync(id): Task&lt;T?&gt;</text>
+  <text x="60" y="605" class="small">+ AddAsync(entity): Task&lt;int&gt;</text>
+  <text x="60" y="620" class="small">+ UpdateAsync(entity): Task&lt;bool&gt;</text>
+  <text x="60" y="635" class="small">+ DeleteAsync(id): Task&lt;bool&gt;</text>
+  <text x="60" y="650" class="small">+ SearchAsync(q): Task&lt;List&lt;T&gt;&gt;</text>
+
+  <!-- Note -->
+  <rect x="360" y="500" width="300" height="180" class="highlight" rx="8"/>
+  <text x="510" y="525" class="note" text-anchor="middle" font-weight="bold">OOP: Polymorphism</text>
+  <text x="370" y="550" class="note">• Interface កំណត់ contract</text>
+  <text x="370" y="570" class="note">• ប្រើ same interface សម្រាប់</text>
+  <text x="370" y="590" class="note">  Product, Order, OrderItem</text>
+  <text x="370" y="610" class="note">• Runtime: object ណាមួយ</text>
+  <text x="370" y="630" class="note">  ក៏អាចប្រើតាម IRepository</text>
+  <text x="370" y="650" class="note">• ផ្លាស់ប្តូរ implementation បាន</text>
+  <text x="370" y="670" class="note">  ដោយមិនប៉ះពាល់ code ផ្សេង</text>
+
+  <!-- Implementations -->
+  <rect x="50" y="720" width="200" height="80" class="concrete-box" rx="8"/>
+  <text x="150" y="745" class="title" text-anchor="middle">SqlProductRepository</text>
+  <line x1="50" y1="755" x2="250" y2="755" stroke="white" stroke-width="1"/>
+  <text x="60" y="775" class="small">: IRepository&lt;Product&gt;</text>
+  <text x="60" y="790" class="small">implements all methods</text>
+
+  <rect x="280" y="720" width="200" height="80" class="concrete-box" rx="8"/>
+  <text x="380" y="745" class="title" text-anchor="middle">SqlOrderRepository</text>
+  <line x1="280" y1="755" x2="480" y2="755" stroke="white" stroke-width="1"/>
+  <text x="290" y="775" class="small">: IRepository&lt;Order&gt;</text>
+  <text x="290" y="790" class="small">+ GetRecentAsync()</text>
+
+  <rect x="510" y="720" width="220" height="80" class="concrete-box" rx="8"/>
+  <text x="620" y="745" class="title" text-anchor="middle">SqlOrderItemRepository</text>
+  <line x1="510" y1="755" x2="730" y2="755" stroke="white" stroke-width="1"/>
+  <text x="520" y="775" class="small">: IRepository&lt;OrderItem&gt;</text>
+  <text x="520" y="790" class="small">implements all methods</text>
+
+  <!-- Implementation arrows -->
+  <path d="M 150 720 L 150 680" class="line dashed" marker-end="url(#arrow-implement)"/>
+  <path d="M 380 720 L 230 680" class="line dashed" marker-end="url(#arrow-implement)"/>
+  <path d="M 620 720 L 270 680" class="line dashed" marker-end="url(#arrow-implement)"/>
+
+  <text x="770" y="600" class="note" font-weight="bold">Same Interface,</text>
+  <text x="770" y="620" class="note" font-weight="bold">Different Types:</text>
+  <text x="770" y="640" class="note">Product repository</text>
+  <text x="770" y="660" class="note">Order repository</text>
+  <text x="770" y="680" class="note">OrderItem repository</text>
+
+  <!-- ========== 3. ENCAPSULATION ========== -->
+  <text x="50" y="860" class="title-section">3. Encapsulation (ការបិទបាំង) - Data Hiding</text>
+
+  <!-- Product model with encapsulation -->
+  <rect x="50" y="880" width="280" height="200" class="class-box" rx="8"/>
+  <text x="190" y="905" class="title" text-anchor="middle">Product</text>
+  <line x1="50" y1="915" x2="330" y2="915" stroke="white" stroke-width="1"/>
+  <text x="60" y="935" class="small" fill="#FFD700">🔓 Public Properties:</text>
+  <text x="60" y="950" class="small">+ Id: int { get; set; }</text>
+  <text x="60" y="965" class="small">+ Name: string { get; set; }</text>
+  <text x="60" y="980" class="small">+ Price: decimal { get; set; }</text>
+  <text x="60" y="995" class="small">+ Stock: int { get; set; }</text>
+  <line x1="50" y1="1005" x2="330" y2="1005" stroke="white" stroke-width="1"/>
+  <text x="60" y="1025" class="small" fill="#90EE90">✓ Auto-properties</text>
+  <text x="60" y="1040" class="small">✓ Getters/Setters auto-generated</text>
+  <text x="60" y="1055" class="small">✓ Validation logic can be added</text>
+
+  <!-- OrderViewModel with encapsulation -->
+  <rect x="360" y="880" width="300" height="200" class="class-box" rx="8"/>
+  <text x="510" y="905" class="title" text-anchor="middle">OrderViewModel</text>
+  <line x1="360" y1="915" x2="660" y2="915" stroke="white" stroke-width="1"/>
+  <text x="370" y="935" class="small" fill="#FFB6C1">🔒 Private Fields:</text>
+  <text x="370" y="950" class="small">- _products: IRepository&lt;Product&gt;</text>
+  <text x="370" y="965" class="small">- _service: OrderService</text>
+  <text x="370" y="980" class="small">- _tendered: decimal</text>
+  <line x1="360" y1="990" x2="660" y2="990" stroke="white" stroke-width="1"/>
+  <text x="370" y="1010" class="small" fill="#FFD700">🔓 Public Properties:</text>
+  <text x="370" y="1025" class="small">+ Tendered: decimal {get; set;}</text>
+  <text x="370" y="1040" class="small">+ Total: decimal {get;} (computed)</text>
+  <text x="370" y="1055" class="small">+ Change: decimal {get;} (computed)</text>
+
+  <!-- Note -->
+  <rect x="690" y="880" width="300" height="200" class="highlight" rx="8"/>
+  <text x="840" y="905" class="note" text-anchor="middle" font-weight="bold">OOP: Encapsulation</text>
+  <text x="700" y="930" class="note">• Private fields (_products, _service)</text>
+  <text x="700" y="950" class="note">  → លាក់ implementation details</text>
+  <text x="700" y="970" class="note">• Public properties (Tendered, Total)</text>
+  <text x="700" y="990" class="note">  → អនុញ្ញាតឱ្យ access ពី UI</text>
+  <text x="700" y="1010" class="note">• Computed properties (Total, Change)</text>
+  <text x="700" y="1030" class="note">  → logic ត្រូវបានបិទបាំង</text>
+  <text x="700" y="1050" class="note">• ObservableProperty attribute</text>
+  <text x="700" y="1070" class="note">  → auto-notify UI on change</text>
+
+  <!-- ========== 4. ABSTRACTION (Interface) ========== -->
+  <text x="1020" y="120" class="title-section">4. Abstraction - IRefreshable Interface</text>
+
+  <!-- IRefreshable -->
+  <rect x="1020" y="140" width="260" height="100" class="interface-box" rx="8"/>
+  <text x="1150" y="165" class="title" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+  <text x="1150" y="185" class="title" text-anchor="middle">IRefreshable</text>
+  <line x1="1020" y1="195" x2="1280" y2="195" stroke="white" stroke-width="1"/>
+  <text x="1030" y="215" class="small">+ RefreshAsync(): Task</text>
+
+  <!-- Implementers -->
+  <rect x="1020" y="280" width="240" height="80" class="concrete-box" rx="8"/>
+  <text x="1140" y="305" class="title" text-anchor="middle">ProductListViewModel</text>
+  <line x1="1020" y1="315" x2="1260" y2="315" stroke="white" stroke-width="1"/>
+  <text x="1030" y="335" class="small">: IRefreshable</text>
+  <text x="1030" y="350" class="small">+ RefreshAsync() → LoadAsync()</text>
+
+  <rect x="1300" y="280" width="240" height="80" class="concrete-box" rx="8"/>
+  <text x="1420" y="305" class="title" text-anchor="middle">ReportViewModel</text>
+  <line x1="1300" y1="315" x2="1540" y2="315" stroke="white" stroke-width="1"/>
+  <text x="1310" y="335" class="small">: IRefreshable</text>
+  <text x="1310" y="350" class="small">+ RefreshAsync() → LoadAsync()</text>
+
+  <!-- Implementation arrows -->
+  <path d="M 1140 280 L 1140 240" class="line dashed" marker-end="url(#arrow-implement)"/>
+  <path d="M 1420 280 L 1200 240" class="line dashed" marker-end="url(#arrow-implement)"/>
+
+  <!-- Note -->
+  <rect x="1020" y="400" width="520" height="140" class="highlight" rx="8"/>
+  <text x="1280" y="425" class="note" text-anchor="middle" font-weight="bold">OOP: Abstraction via Interface</text>
+  <text x="1030" y="450" class="note">• Interface កំណត់ behavior តែមួយ: RefreshAsync()</text>
+  <text x="1030" y="470" class="note">• ViewModel ណាក៏បាន អាច implement IRefreshable</text>
+  <text x="1030" y="490" class="note">• MainViewModel អាច refresh any IRefreshable</text>
+  <text x="1030" y="510" class="note">  ដោយមិនចាំបាច់ដឹងពី concrete type</text>
+  <text x="1030" y="530" class="note">• Code reuse: if (Content is IRefreshable r) await r.RefreshAsync();</text>
+
+  <!-- ========== 5. COMPOSITION & DEPENDENCY INJECTION ========== -->
+  <text x="1020" y="600" class="title-section">5. Composition &amp; Dependency Injection</text>
+
+  <!-- OrderService -->
+  <rect x="1020" y="620" width="280" height="180" class="concrete-box" rx="8"/>
+  <text x="1160" y="645" class="title" text-anchor="middle">OrderService</text>
+  <line x1="1020" y1="655" x2="1300" y2="655" stroke="white" stroke-width="1"/>
+  <text x="1030" y="675" class="small" fill="#FFB6C1">🔒 Private (Composition):</text>
+  <text x="1030" y="690" class="small">- _db: Db</text>
+  <text x="1030" y="705" class="small">- _orders: SqlOrderRepository</text>
+  <text x="1030" y="720" class="small">- _items: SqlOrderItemRepository</text>
+  <line x1="1020" y1="730" x2="1300" y2="730" stroke="white" stroke-width="1"/>
+  <text x="1030" y="750" class="small">+ CompleteAsync(order): Task&lt;int&gt;</text>
+  <text x="1030" y="765" class="small">  → uses _orders and _items</text>
+  <text x="1030" y="780" class="small">+ GetRecentAsync(): Task&lt;List&gt;</text>
+
+  <!-- Note -->
+  <rect x="1020" y="830" width="520" height="160" class="highlight" rx="8"/>
+  <text x="1280" y="855" class="note" text-anchor="middle" font-weight="bold">OOP: Composition Over Inheritance</text>
+  <text x="1030" y="880" class="note">• OrderService មិនបាន inherit ពី repository ទេ</text>
+  <text x="1030" y="900" class="note">• វា "has-a" repositories (composition)</text>
+  <text x="1030" y="920" class="note">• Dependencies injected តាម constructor:</text>
+  <text x="1030" y="940" class="note">  OrderService(Db db, SqlOrderRepo orders, SqlOrderItemRepo items)</text>
+  <text x="1030" y="960" class="note">• Loose coupling → easy to test, maintain, replace</text>
+  <text x="1030" y="980" class="note">• Single Responsibility: OrderService គ្រប់គ្រង order logic តែប៉ុណ្ណោះ</text>
+
+  <!-- ========== SUMMARY ========== -->
+  <rect x="50" y="1120" width="1490" height="220" class="highlight" rx="12" stroke-width="3"/>
+  <text x="795" y="1150" class="title-section" text-anchor="middle">សង្ខេបគោលការណ៍ OOP ក្នុង Coffee Shop Application</text>
+  
+  <text x="70" y="1185" class="note" font-weight="bold">1. Inheritance (ការពន្យល់មរតក):</text>
+  <text x="100" y="1205" class="note">• ViewModelBase → MainViewModel, ProductListViewModel, OrderViewModel, ReportViewModel</text>
+  <text x="100" y="1225" class="note">• Child classes inherit ObservableObject functionality (property change notification)</text>
+
+  <text x="70" y="1255" class="note" font-weight="bold">2. Polymorphism (ពហុរូបភាព):</text>
+  <text x="100" y="1275" class="note">• IRepository&lt;T&gt; → SqlProductRepository, SqlOrderRepository, SqlOrderItemRepository</text>
+  <text x="100" y="1295" class="note">• Same interface, different implementations. Runtime: use any IRepository&lt;T&gt; object interchangeably</text>
+
+  <text x="820" y="1185" class="note" font-weight="bold">3. Encapsulation (ការបិទបាំង):</text>
+  <text x="850" y="1205" class="note">• Private fields (_products, _service) hide implementation</text>
+  <text x="850" y="1225" class="note">• Public properties expose controlled access</text>
+  <text x="850" y="1245" class="note">• Auto-properties, computed properties (Total, Change)</text>
+
+  <text x="820" y="1275" class="note" font-weight="bold">4. Abstraction (ការបំបែក):</text>
+  <text x="850" y="1295" class="note">• Interfaces (IRepository, IRefreshable) define contracts</text>
+  <text x="850" y="1315" class="note">• Hide complexity, expose essential behavior only</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow-inherit" markerWidth="12" markerHeight="12" refX="0" refY="3" orient="auto">
+      <path d="M0,3 L12,6 L12,0 z" fill="none" stroke="#333" stroke-width="2"/>
+    </marker>
+    <marker id="arrow-implement" markerWidth="12" markerHeight="12" refX="0" refY="3" orient="auto">
+      <path d="M0,3 L12,6 L12,0 z" fill="none" stroke="#333" stroke-width="2"/>
+    </marker>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Legend -->
+  <text x="1320" y="1060" class="note" font-weight="bold">Legend:</text>
+  <rect x="1320" y="1070" width="80" height="25" class="interface-box" rx="4"/>
+  <text x="1360" y="1088" class="small" text-anchor="middle">Interface</text>
+  
+  <rect x="1410" y="1070" width="80" height="25" class="abstract-box" rx="4"/>
+  <text x="1450" y="1088" class="small" text-anchor="middle">Abstract</text>
+  
+  <rect x="1500" y="1070" width="80" height="25" class="concrete-box" rx="4"/>
+  <text x="1540" y="1088" class="small" text-anchor="middle">Concrete</text>
+
+  <line x1="1320" y1="1105" x2="1360" y2="1105" class="line" marker-end="url(#arrow-inherit)"/>
+  <text x="1365" y="1110" class="note">Inheritance</text>
+
+  <line x1="1450" y1="1105" x2="1490" y2="1105" class="line dashed" marker-end="url(#arrow-implement)"/>
+  <text x="1495" y="1110" class="note">Implements</text>
+
+</svg>

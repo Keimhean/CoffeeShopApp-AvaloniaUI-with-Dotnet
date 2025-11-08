@@ -1,0 +1,383 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1800">
+  <defs>
+    <style>
+      .class-box { fill: #6E7BFF; stroke: #4A5FFF; stroke-width: 2; }
+      .interface-box { fill: #53EAFD; stroke: #33CADD; stroke-width: 2; }
+      .service-box { fill: #28C76F; stroke: #1FA75F; stroke-width: 2; }
+      .repo-box { fill: #FF9F43; stroke: #FF8A1F; stroke-width: 2; }
+      .text { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; }
+      .title { fill: white; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: bold; }
+      .small { fill: white; font-family: 'Courier New', monospace; font-size: 11px; }
+      .line { stroke: #333; stroke-width: 2; fill: none; }
+      .arrow { fill: #333; }
+      .dashed { stroke-dasharray: 5,5; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="30" class="title" text-anchor="middle" style="font-size: 24px; fill: #333;">Coffee Shop Application - UML Class Diagram</text>
+
+  <!-- MODELS LAYER -->
+  <text x="100" y="70" class="title" style="fill: #333;">Models</text>
+  
+  <!-- Product -->
+  <rect x="50" y="90" width="200" height="180" class="class-box" rx="8"/>
+  <text x="150" y="115" class="title" text-anchor="middle">Product</text>
+  <line x1="50" y1="125" x2="250" y2="125" stroke="white" stroke-width="1"/>
+  <text x="60" y="145" class="small">+ Id: int</text>
+  <text x="60" y="160" class="small">+ Name: string</text>
+  <text x="60" y="175" class="small">+ Category: string?</text>
+  <text x="60" y="190" class="small">+ Price: decimal</text>
+  <text x="60" y="205" class="small">+ Stock: int</text>
+  <line x1="50" y1="215" x2="250" y2="215" stroke="white" stroke-width="1"/>
+  <text x="60" y="235" class="small">+ GetHashCode(): int</text>
+  <text x="60" y="250" class="small">+ Equals(obj): bool</text>
+
+  <!-- Order -->
+  <rect x="300" y="90" width="240" height="220" class="class-box" rx="8"/>
+  <text x="420" y="115" class="title" text-anchor="middle">Order</text>
+  <line x1="300" y1="125" x2="540" y2="125" stroke="white" stroke-width="1"/>
+  <text x="310" y="145" class="small">+ Id: int</text>
+  <text x="310" y="160" class="small">+ OrderNumber: string</text>
+  <text x="310" y="175" class="small">+ Cashier: string?</text>
+  <text x="310" y="190" class="small">+ CreatedAt: DateTime</text>
+  <text x="310" y="205" class="small">+ Items: List&lt;OrderItem&gt;</text>
+  <text x="310" y="220" class="small">+ Amount: decimal</text>
+  <line x1="300" y1="230" x2="540" y2="230" stroke="white" stroke-width="1"/>
+  <text x="310" y="250" class="small">+ Total: decimal {get}</text>
+  <text x="310" y="265" class="small">+ CreatedAtLocal: DateTime</text>
+  <text x="310" y="280" class="small">+ CreatedAtLocalString: string</text>
+
+  <!-- OrderItem -->
+  <rect x="590" y="90" width="220" height="180" class="class-box" rx="8"/>
+  <text x="700" y="115" class="title" text-anchor="middle">OrderItem</text>
+  <line x1="590" y1="125" x2="810" y2="125" stroke="white" stroke-width="1"/>
+  <text x="600" y="145" class="small">+ Id: int</text>
+  <text x="600" y="160" class="small">+ OrderId: int</text>
+  <text x="600" y="175" class="small">+ ProductId: int</text>
+  <text x="600" y="190" class="small">+ Qty: int</text>
+  <text x="600" y="205" class="small">+ UnitPrice: decimal</text>
+  <text x="600" y="220" class="small">+ Product: Product?</text>
+  <line x1="590" y1="230" x2="810" y2="230" stroke="white" stroke-width="1"/>
+  <text x="600" y="250" class="small">+ Subtotal: decimal {get}</text>
+
+  <!-- ReportRow -->
+  <rect x="860" y="90" width="200" height="140" class="class-box" rx="8"/>
+  <text x="960" y="115" class="title" text-anchor="middle">ReportRow</text>
+  <line x1="860" y1="125" x2="1060" y2="125" stroke="white" stroke-width="1"/>
+  <text x="870" y="145" class="small">+ Date: DateTime</text>
+  <text x="870" y="160" class="small">+ Orders: int</text>
+  <text x="870" y="175" class="small">+ Revenue: decimal</text>
+  <line x1="860" y1="185" x2="1060" y2="185" stroke="white" stroke-width="1"/>
+  <text x="870" y="205" class="small">+ ToString(): string</text>
+
+  <!-- Relationships between models -->
+  <!-- Order -> OrderItem (composition) -->
+  <path d="M 420 310 L 420 350 L 700 350 L 700 270" class="line" marker-end="url(#diamond)"/>
+  <text x="520" y="345" class="small" style="fill: #333;">1</text>
+  <text x="705" y="290" class="small" style="fill: #333;">*</text>
+
+  <!-- OrderItem -> Product (association) -->
+  <path d="M 590 180 L 250 180" class="line" marker-end="url(#arrow)"/>
+  <text x="400" y="175" class="small" style="fill: #333;">references</text>
+
+  <!-- DATA LAYER -->
+  <text x="100" y="420" class="title" style="fill: #333;">Data Layer</text>
+
+  <!-- IRepository Interface -->
+  <rect x="50" y="440" width="280" height="200" class="interface-box" rx="8"/>
+  <text x="190" y="465" class="title" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+  <text x="190" y="485" class="title" text-anchor="middle">IRepository&lt;T&gt;</text>
+  <line x1="50" y1="495" x2="330" y2="495" stroke="white" stroke-width="1"/>
+  <text x="60" y="515" class="small">+ GetAllAsync(): Task&lt;List&lt;T&gt;&gt;</text>
+  <text x="60" y="530" class="small">+ GetByIdAsync(id): Task&lt;T?&gt;</text>
+  <text x="60" y="545" class="small">+ SearchAsync(q): Task&lt;List&lt;T&gt;&gt;</text>
+  <text x="60" y="560" class="small">+ AddAsync(entity): Task&lt;int&gt;</text>
+  <text x="60" y="575" class="small">+ UpdateAsync(entity): Task&lt;bool&gt;</text>
+  <text x="60" y="590" class="small">+ DeleteAsync(id): Task&lt;bool&gt;</text>
+  <text x="60" y="605" class="small"></text>
+
+  <!-- Db -->
+  <rect x="380" y="440" width="200" height="120" class="repo-box" rx="8"/>
+  <text x="480" y="465" class="title" text-anchor="middle">Db</text>
+  <line x1="380" y1="475" x2="580" y2="475" stroke="white" stroke-width="1"/>
+  <text x="390" y="495" class="small">- connStr: string</text>
+  <line x1="380" y1="505" x2="580" y2="505" stroke="white" stroke-width="1"/>
+  <text x="390" y="525" class="small">+ Open(): SqlConnection</text>
+  <text x="390" y="540" class="small">+ constructor(connStr)</text>
+
+  <!-- SqlProductRepository -->
+  <rect x="50" y="680" width="230" height="160" class="repo-box" rx="8"/>
+  <text x="165" y="705" class="title" text-anchor="middle">SqlProductRepository</text>
+  <line x1="50" y1="715" x2="280" y2="715" stroke="white" stroke-width="1"/>
+  <text x="60" y="735" class="small">- _db: Db</text>
+  <line x1="50" y1="745" x2="280" y2="745" stroke="white" stroke-width="1"/>
+  <text x="60" y="765" class="small">+ GetAllAsync()</text>
+  <text x="60" y="780" class="small">+ GetByIdAsync(id)</text>
+  <text x="60" y="795" class="small">+ SearchAsync(q)</text>
+  <text x="60" y="810" class="small">+ AddAsync(entity)</text>
+  <text x="60" y="825" class="small">+ UpdateAsync/DeleteAsync</text>
+
+  <!-- SqlOrderRepository -->
+  <rect x="330" y="680" width="230" height="160" class="repo-box" rx="8"/>
+  <text x="445" y="705" class="title" text-anchor="middle">SqlOrderRepository</text>
+  <line x1="330" y1="715" x2="560" y2="715" stroke="white" stroke-width="1"/>
+  <text x="340" y="735" class="small">- _db: Db</text>
+  <line x1="330" y1="745" x2="560" y2="745" stroke="white" stroke-width="1"/>
+  <text x="340" y="765" class="small">+ CreateAsync(order)</text>
+  <text x="340" y="780" class="small">+ GetRecentAsync(top)</text>
+  <text x="340" y="795" class="small">+ GetAllAsync()</text>
+  <text x="340" y="810" class="small">+ AddAsync/UpdateAsync</text>
+  <text x="340" y="825" class="small">+ DeleteAsync(id)</text>
+
+  <!-- SqlOrderItemRepository -->
+  <rect x="610" y="680" width="240" height="140" class="repo-box" rx="8"/>
+  <text x="730" y="705" class="title" text-anchor="middle">SqlOrderItemRepository</text>
+  <line x1="610" y1="715" x2="850" y2="715" stroke="white" stroke-width="1"/>
+  <text x="620" y="735" class="small">- _db: Db</text>
+  <line x1="610" y1="745" x2="850" y2="745" stroke="white" stroke-width="1"/>
+  <text x="620" y="765" class="small">+ GetByOrderIdAsync(orderId)</text>
+  <text x="620" y="780" class="small">+ AddAsync(item)</text>
+  <text x="620" y="795" class="small">+ UpdateAsync/DeleteAsync</text>
+
+  <!-- Implements arrows -->
+  <path d="M 165 680 L 165 640" class="line dashed" marker-end="url(#arrow-open)"/>
+  <text x="170" y="660" class="small" style="fill: #333;">&lt;&lt;implements&gt;&gt;</text>
+  
+  <path d="M 445 680 L 280 640" class="line dashed" marker-end="url(#arrow-open)"/>
+  
+  <path d="M 730 680 L 280 640" class="line dashed" marker-end="url(#arrow-open)"/>
+
+  <!-- Uses Db -->
+  <path d="M 280 760 L 380 520" class="line" marker-end="url(#arrow)"/>
+  <path d="M 330 760 L 450 560" class="line" marker-end="url(#arrow)"/>
+  <path d="M 610 760 L 520 560" class="line" marker-end="url(#arrow)"/>
+
+  <!-- SERVICES LAYER -->
+  <text x="950" y="420" class="title" style="fill: #333;">Services</text>
+
+  <!-- OrderService -->
+  <rect x="900" y="440" width="260" height="200" class="service-box" rx="8"/>
+  <text x="1030" y="465" class="title" text-anchor="middle">OrderService</text>
+  <line x1="900" y1="475" x2="1160" y2="475" stroke="white" stroke-width="1"/>
+  <text x="910" y="495" class="small">- _db: Db</text>
+  <text x="910" y="510" class="small">- _orders: SqlOrderRepository</text>
+  <text x="910" y="525" class="small">- _items: SqlOrderItemRepository</text>
+  <line x1="900" y1="535" x2="1160" y2="535" stroke="white" stroke-width="1"/>
+  <text x="910" y="555" class="small">+ NewOrderNumber(): string</text>
+  <text x="910" y="570" class="small">+ CompleteAsync(order): Task&lt;int&gt;</text>
+  <text x="910" y="585" class="small">+ GetRecentAsync(top): Task&lt;List&gt;</text>
+  <text x="910" y="600" class="small"></text>
+
+  <!-- ReportService -->
+  <rect x="900" y="680" width="260" height="140" class="service-box" rx="8"/>
+  <text x="1030" y="705" class="title" text-anchor="middle">ReportService</text>
+  <line x1="900" y1="715" x2="1160" y2="715" stroke="white" stroke-width="1"/>
+  <text x="910" y="735" class="small">- _db: Db</text>
+  <line x1="900" y1="745" x2="1160" y2="745" stroke="white" stroke-width="1"/>
+  <text x="910" y="765" class="small">+ GetDailyAsync(from, to):</text>
+  <text x="910" y="780" class="small">    Task&lt;List&lt;ReportRow&gt;&gt;</text>
+
+  <!-- Services use repositories -->
+  <path d="M 900 520 L 560 760" class="line" marker-end="url(#arrow)"/>
+  <text x="720" y="620" class="small" style="fill: #333;">uses</text>
+  
+  <path d="M 900 580 L 850 760" class="line" marker-end="url(#arrow)"/>
+
+  <!-- VIEWMODELS LAYER -->
+  <text x="100" y="920" class="title" style="fill: #333;">ViewModels</text>
+
+  <!-- ViewModelBase -->
+  <rect x="50" y="940" width="200" height="100" class="class-box" rx="8"/>
+  <text x="150" y="965" class="title" text-anchor="middle">ViewModelBase</text>
+  <line x1="50" y1="975" x2="250" y2="975" stroke="white" stroke-width="1"/>
+  <text x="60" y="995" class="small">: ObservableObject</text>
+  <line x1="50" y1="1005" x2="250" y2="1005" stroke="white" stroke-width="1"/>
+  <text x="60" y="1025" class="small">(from CommunityToolkit.Mvvm)</text>
+
+  <!-- IRefreshable Interface -->
+  <rect x="300" y="940" width="220" height="100" class="interface-box" rx="8"/>
+  <text x="410" y="965" class="title" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+  <text x="410" y="985" class="title" text-anchor="middle">IRefreshable</text>
+  <line x1="300" y1="995" x2="520" y2="995" stroke="white" stroke-width="1"/>
+  <text x="310" y="1015" class="small">+ RefreshAsync(): Task</text>
+
+  <!-- MainViewModel -->
+  <rect x="50" y="1080" width="280" height="220" class="class-box" rx="8"/>
+  <text x="190" y="1105" class="title" text-anchor="middle">MainViewModel</text>
+  <line x1="50" y1="1115" x2="330" y2="1115" stroke="white" stroke-width="1"/>
+  <text x="60" y="1135" class="small">- _content: ViewModelBase</text>
+  <text x="60" y="1150" class="small">- _isProductsSelected: bool</text>
+  <text x="60" y="1165" class="small">- _isOrdersSelected: bool</text>
+  <text x="60" y="1180" class="small">- _isReportSelected: bool</text>
+  <line x1="50" y1="1190" x2="330" y2="1190" stroke="white" stroke-width="1"/>
+  <text x="60" y="1210" class="small">+ ShowProductsCmd: IRelayCommand</text>
+  <text x="60" y="1225" class="small">+ ShowOrdersCmd: IRelayCommand</text>
+  <text x="60" y="1240" class="small">+ ShowReportCmd: IRelayCommand</text>
+  <text x="60" y="1255" class="small">+ RefreshCmd: IAsyncRelayCommand</text>
+  <text x="60" y="1270" class="small">- SetSelected(which): void</text>
+  <text x="60" y="1285" class="small">- RefreshAsync(): Task</text>
+
+  <!-- ProductListViewModel -->
+  <rect x="370" y="1080" width="280" height="240" class="class-box" rx="8"/>
+  <text x="510" y="1105" class="title" text-anchor="middle">ProductListViewModel</text>
+  <line x1="370" y1="1115" x2="650" y2="1115" stroke="white" stroke-width="1"/>
+  <text x="380" y="1135" class="small">- _repo: IRepository&lt;Product&gt;</text>
+  <text x="380" y="1150" class="small">- _searchText: string</text>
+  <text x="380" y="1165" class="small">+ Items: ObservableCollection</text>
+  <line x1="370" y1="1175" x2="650" y2="1175" stroke="white" stroke-width="1"/>
+  <text x="380" y="1195" class="small">+ LoadCmd: IAsyncRelayCommand</text>
+  <text x="380" y="1210" class="small">+ RefreshCmd: IAsyncRelayCommand</text>
+  <text x="380" y="1225" class="small">+ AddCmd: IAsyncRelayCommand</text>
+  <text x="380" y="1240" class="small">+ SaveCmd: Command&lt;Product&gt;</text>
+  <text x="380" y="1255" class="small">+ DeleteCmd: Command&lt;Product&gt;</text>
+  <text x="380" y="1270" class="small">- LoadAsync(): Task</text>
+  <text x="380" y="1285" class="small">- AddAsync(): Task</text>
+  <text x="380" y="1300" class="small">+ RefreshAsync(): Task</text>
+
+  <!-- OrderViewModel -->
+  <rect x="690" y="1080" width="300" height="280" class="class-box" rx="8"/>
+  <text x="840" y="1105" class="title" text-anchor="middle">OrderViewModel</text>
+  <line x1="690" y1="1115" x2="990" y2="1115" stroke="white" stroke-width="1"/>
+  <text x="700" y="1135" class="small">- _products: IRepository&lt;Product&gt;</text>
+  <text x="700" y="1150" class="small">- _service: OrderService</text>
+  <text x="700" y="1165" class="small">+ ProductChoices: ObservableCol.</text>
+  <text x="700" y="1180" class="small">+ Items: ObservableCollection</text>
+  <text x="700" y="1195" class="small">+ RecentOrders: ObservableCol.</text>
+  <text x="700" y="1210" class="small">+ Tendered/Qty/Cashier: fields</text>
+  <line x1="690" y1="1220" x2="990" y2="1220" stroke="white" stroke-width="1"/>
+  <text x="700" y="1240" class="small">+ Total/Change: decimal {get}</text>
+  <text x="700" y="1255" class="small">+ LoadChoicesCmd: Command</text>
+  <text x="700" y="1270" class="small">+ AddToOrderCmd: IRelayCommand</text>
+  <text x="700" y="1285" class="small">+ CompleteCmd: IAsyncRelayCommand</text>
+  <text x="700" y="1300" class="small">+ IncrementQtyCmd: IRelayCommand</text>
+  <text x="700" y="1315" class="small">+ DecrementQtyCmd: IRelayCommand</text>
+  <text x="700" y="1330" class="small">- LoadChoicesAsync(): Task</text>
+  <text x="700" y="1345" class="small">- CompleteAsync(): Task</text>
+
+  <!-- ReportViewModel -->
+  <rect x="1030" y="1080" width="280" height="200" class="class-box" rx="8"/>
+  <text x="1170" y="1105" class="title" text-anchor="middle">ReportViewModel</text>
+  <line x1="1030" y1="1115" x2="1310" y2="1115" stroke="white" stroke-width="1"/>
+  <text x="1040" y="1135" class="small">- _service: ReportService</text>
+  <text x="1040" y="1150" class="small">+ Rows: ObservableCollection</text>
+  <text x="1040" y="1165" class="small">+ TotalOrders: int</text>
+  <text x="1040" y="1180" class="small">+ TotalRevenue: decimal</text>
+  <line x1="1030" y1="1190" x2="1310" y2="1190" stroke="white" stroke-width="1"/>
+  <text x="1040" y="1210" class="small">+ LoadCmd: IAsyncRelayCommand</text>
+  <text x="1040" y="1225" class="small">+ RefreshAsync(): Task</text>
+  <text x="1040" y="1240" class="small">- LoadAsync(): Task</text>
+  <text x="1040" y="1255" class="small">- ComputeTotals(): void</text>
+
+  <!-- Inheritance arrows -->
+  <path d="M 190 1080 L 190 1040" class="line" marker-end="url(#arrow-open)"/>
+  <path d="M 510 1080 L 200 1040" class="line" marker-end="url(#arrow-open)"/>
+  <path d="M 840 1080 L 210 1040" class="line" marker-end="url(#arrow-open)"/>
+  <path d="M 1170 1080 L 220 1040" class="line" marker-end="url(#arrow-open)"/>
+
+  <!-- Implements IRefreshable -->
+  <path d="M 510 1080 L 410 1040" class="line dashed" marker-end="url(#arrow-open)"/>
+  <path d="M 1170 1080 L 430 1040" class="line dashed" marker-end="url(#arrow-open)"/>
+
+  <!-- ViewModels use repositories and services -->
+  <path d="M 510 1080 L 165 840" class="line" marker-end="url(#arrow)"/>
+  <text x="300" y="950" class="small" style="fill: #333;">uses</text>
+
+  <path d="M 840 1080 L 280 840" class="line" marker-end="url(#arrow)"/>
+  <path d="M 840 1080 L 1030 640" class="line" marker-end="url(#arrow)"/>
+  <text x="880" y="850" class="small" style="fill: #333;">uses</text>
+
+  <path d="M 1170 1080 L 1030 820" class="line" marker-end="url(#arrow)"/>
+
+  <!-- VIEWS LAYER -->
+  <text x="100" y="1420" class="title" style="fill: #333;">Views (XAML)</text>
+
+  <!-- MainWindow -->
+  <rect x="50" y="1440" width="220" height="120" class="class-box" rx="8" style="fill: #E76682;"/>
+  <text x="160" y="1465" class="title" text-anchor="middle">MainWindow</text>
+  <line x1="50" y1="1475" x2="270" y2="1475" stroke="white" stroke-width="1"/>
+  <text x="60" y="1495" class="small">+ DataContext: MainViewModel</text>
+  <line x1="50" y1="1505" x2="270" y2="1505" stroke="white" stroke-width="1"/>
+  <text x="60" y="1525" class="small">+ Sidebar navigation</text>
+  <text x="60" y="1540" class="small">+ ContentControl binding</text>
+
+  <!-- ProductListView -->
+  <rect x="320" y="1440" width="220" height="100" class="class-box" rx="8" style="fill: #E76682;"/>
+  <text x="430" y="1465" class="title" text-anchor="middle">ProductListView</text>
+  <line x1="320" y1="1475" x2="540" y2="1475" stroke="white" stroke-width="1"/>
+  <text x="330" y="1495" class="small">+ DataContext:</text>
+  <text x="330" y="1510" class="small">  ProductListViewModel</text>
+  <text x="330" y="1525" class="small">+ Product list, search, CRUD</text>
+
+  <!-- OrderView -->
+  <rect x="590" y="1440" width="220" height="100" class="class-box" rx="8" style="fill: #E76682;"/>
+  <text x="700" y="1465" class="title" text-anchor="middle">OrderView</text>
+  <line x1="590" y1="1475" x2="810" y2="1475" stroke="white" stroke-width="1"/>
+  <text x="600" y="1495" class="small">+ DataContext: OrderViewModel</text>
+  <text x="600" y="1510" class="small">+ Order creation UI</text>
+  <text x="600" y="1525" class="small">+ Recent orders list</text>
+
+  <!-- ReportView -->
+  <rect x="860" y="1440" width="220" height="100" class="class-box" rx="8" style="fill: #E76682;"/>
+  <text x="970" y="1465" class="title" text-anchor="middle">ReportView</text>
+  <line x1="860" y1="1475" x2="1080" y2="1475" stroke="white" stroke-width="1"/>
+  <text x="870" y="1495" class="small">+ DataContext: ReportViewModel</text>
+  <text x="870" y="1510" class="small">+ Sales summary, totals</text>
+  <text x="870" y="1525" class="small">+ Date filtering</text>
+
+  <!-- Bindings from Views to ViewModels -->
+  <path d="M 160 1440 L 190 1300" class="line dashed" marker-end="url(#arrow)"/>
+  <text x="165" y="1360" class="small" style="fill: #333;">binds to</text>
+
+  <path d="M 430 1440 L 510 1320" class="line dashed" marker-end="url(#arrow)"/>
+  <path d="M 700 1440 L 840 1360" class="line dashed" marker-end="url(#arrow)"/>
+  <path d="M 970 1440 L 1170 1280" class="line dashed" marker-end="url(#arrow)"/>
+
+  <!-- UTILITIES -->
+  <text x="100" y="1620" class="title" style="fill: #333;">Utilities</text>
+  
+  <rect x="50" y="1640" width="260" height="120" class="service-box" rx="8" style="fill: #FF9F43;"/>
+  <text x="180" y="1665" class="title" text-anchor="middle">TimeZoneHelper</text>
+  <line x1="50" y1="1675" x2="310" y2="1675" stroke="white" stroke-width="1"/>
+  <text x="60" y="1695" class="small">+ CambodiaTimeZone: TimeZoneInfo</text>
+  <line x1="50" y1="1705" x2="310" y2="1705" stroke="white" stroke-width="1"/>
+  <text x="60" y="1725" class="small">+ ToCambodiaTime(utc): DateTime</text>
+  <text x="60" y="1740" class="small">  (converts UTC to Asia/Phnom_Penh)</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" class="arrow"/>
+    </marker>
+    <marker id="arrow-open" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,3 L0,6" fill="none" stroke="#333" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+      <path d="M0,3 L5,0 L10,3 L5,6 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Legend -->
+  <text x="1100" y="1620" class="title" style="fill: #333;">Legend</text>
+  <rect x="1100" y="1640" width="80" height="30" class="class-box" rx="4"/>
+  <text x="1140" y="1660" class="small" text-anchor="middle">Model</text>
+  
+  <rect x="1100" y="1680" width="80" height="30" class="interface-box" rx="4"/>
+  <text x="1140" y="1700" class="small" text-anchor="middle">Interface</text>
+  
+  <rect x="1100" y="1720" width="80" height="30" class="service-box" rx="4"/>
+  <text x="1140" y="1740" class="small" text-anchor="middle">Service</text>
+
+  <rect x="1200" y="1640" width="80" height="30" class="repo-box" rx="4"/>
+  <text x="1240" y="1660" class="small" text-anchor="middle">Repository</text>
+
+  <rect x="1200" y="1680" width="80" height="30" class="class-box" rx="4" style="fill: #E76682;"/>
+  <text x="1240" y="1700" class="small" text-anchor="middle">View</text>
+
+  <line x1="1200" y1="1725" x2="1250" y2="1725" class="line" marker-end="url(#arrow)"/>
+  <text x="1255" y="1730" class="small" style="fill: #333;">uses/depends</text>
+
+  <line x1="1200" y1="1745" x2="1250" y2="1745" class="line dashed" marker-end="url(#arrow-open)"/>
+  <text x="1255" y="1750" class="small" style="fill: #333;">implements</text>
+
+</svg>

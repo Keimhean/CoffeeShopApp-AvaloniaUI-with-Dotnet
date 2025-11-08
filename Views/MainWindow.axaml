@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="using:CoffeeShopApp.ViewModels"
+        x:Class="CoffeeShopApp.Views.MainWindow"
+        Width="1100" Height="700"
+        Title="ប្រព័ន្ធគ្រប់គ្រងហាង កាហ្វេ"
+        TransparencyLevelHint="AcrylicBlur">
+  <Window.Background>
+    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+      <GradientStop Color="#51A2FF" Offset="0"/>
+      <GradientStop Color="#53EAFD" Offset="0.5"/>
+      <GradientStop Color="#00D5BE" Offset="1"/>
+    </LinearGradientBrush>
+  </Window.Background>
+  <Grid ColumnDefinitions="260,*" Margin="20">
+    <!-- Sidebar -->
+    <Border Classes="glass" Margin="0,0,20,0" Padding="18">
+      <StackPanel Spacing="12">
+  <Grid Margin="6" ColumnDefinitions="Auto,*" VerticalAlignment="Center">
+    <Image Source="avares://CoffeeShopApp/Assets/Menu.png" Width="20" Height="20" Margin="0,0,8,0" VerticalAlignment="Center"/>
+    <TextBlock Grid.Column="1" Text="MENU" FontWeight="SemiBold" Opacity="0.7" VerticalAlignment="Center"/>
+  </Grid>
+  <ToggleButton Classes="menu" IsChecked="{Binding IsProductsSelected}" Command="{Binding ShowProductsCmd}">
+    <Grid ColumnDefinitions="40,*">
+      <Image Source="avares://CoffeeShopApp/Assets/product.png" Width="24" Height="24" Margin="6" VerticalAlignment="Center"/>
+      <TextBlock Grid.Column="1" Text="Products List" VerticalAlignment="Center" Margin="12,0"/>
+    </Grid>
+  </ToggleButton>
+
+  <ToggleButton Classes="menu" IsChecked="{Binding IsOrdersSelected}" Command="{Binding ShowOrdersCmd}">
+    <Grid ColumnDefinitions="40,*">
+      <Image Source="avares://CoffeeShopApp/Assets/order.png" Width="24" Height="24" Margin="6" VerticalAlignment="Center"/>
+      <TextBlock Grid.Column="1" Text="Orders" VerticalAlignment="Center" Margin="12,0"/>
+    </Grid>
+  </ToggleButton>
+
+  <ToggleButton Classes="menu" IsChecked="{Binding IsReportSelected}" Command="{Binding ShowReportCmd}">
+    <Grid ColumnDefinitions="40,*">
+      <Image Source="avares://CoffeeShopApp/Assets/report.png" Width="24" Height="24" Margin="6" VerticalAlignment="Center"/>
+      <TextBlock Grid.Column="1" Text="Report" VerticalAlignment="Center" Margin="12,0"/>
+    </Grid>
+  </ToggleButton>
+      </StackPanel>
+    </Border>
+
+    <!-- Content -->
+    <Border Grid.Column="1" Classes="glass" Padding="18">
+      <ContentControl Content="{Binding Content}"/>
+    </Border>
+  </Grid>
+</Window>

@@ -1,0 +1,151 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Styles.Resources>
+    <ResourceDictionary>
+         
+          <Color x:Key="BG_A">#51A2FF</Color>
+          <Color x:Key="BG_B">#53EAFD</Color>
+          <Color x:Key="BG_C">#00D5BE</Color>
+
+          <Color x:Key="CardA">#6E7BFF</Color>
+          <Color x:Key="CardB">#5F7BFF</Color>
+
+          <Color x:Key="AccentGreen">#28C76F</Color>
+          <Color x:Key="DangerRed">#E76682</Color>
+
+          <Color x:Key="GlassOverlay">#CCFFFFFF</Color>
+          <Color x:Key="GlassBorder">#60FFFFFF</Color>
+          <Color x:Key="TextPrimary">#0F172A</Color>
+
+          <!-- App background gradient -->
+          <LinearGradientBrush x:Key="AppBackgroundGradient" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="{StaticResource BG_A}" Offset="0"/>
+            <GradientStop Color="{StaticResource BG_B}" Offset="0.5"/>
+            <GradientStop Color="{StaticResource BG_C}" Offset="1"/>
+          </LinearGradientBrush>
+
+          <!-- Card gradient -->
+          <LinearGradientBrush x:Key="CardGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="{StaticResource CardA}" Offset="0"/>
+            <GradientStop Color="{StaticResource CardB}" Offset="1"/>
+          </LinearGradientBrush>
+
+          <SolidColorBrush x:Key="GlassOverlayBrush" Color="{StaticResource GlassOverlay}"/>
+          <SolidColorBrush x:Key="GlassBorderBrush" Color="{StaticResource GlassBorder}"/>
+          <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}"/>
+          <SolidColorBrush x:Key="AccentGreenBrush" Color="{StaticResource AccentGreen}"/>
+          <SolidColorBrush x:Key="DangerRedBrush" Color="{StaticResource DangerRed}"/>
+          <Color x:Key="MenuSelect">#7D67FF</Color>
+          <Color x:Key="MenuSelected">#615FFF</Color>
+          <SolidColorBrush x:Key="MenuSelectBrush" Color="{StaticResource MenuSelected}"/>
+          <LinearGradientBrush x:Key="SidebarGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#66ffffff" Offset="0"/>
+            <GradientStop Color="#33ffffff" Offset="1"/>
+          </LinearGradientBrush>
+    </ResourceDictionary>
+  </Styles.Resources>
+
+      <!-- Window background: full gradient -->
+      <Style Selector="Window">
+        <Setter Property="Background" Value="{StaticResource AppBackgroundGradient}"/>
+        <Setter Property="Padding" Value="18"/>
+      </Style>
+
+      <!-- Sidebar / panels: frosted glass look -->
+      <Style Selector="Border.glass">
+        <Setter Property="CornerRadius" Value="16"/>
+        <Setter Property="Padding" Value="18"/>
+        <Setter Property="Background" Value="{StaticResource GlassOverlayBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource GlassBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BoxShadow" Value="0 16 40 0 #22000000"/>
+      </Style>
+
+      <!-- Sidebar specific -->
+      <Style Selector="Border.sidebar">
+        <Setter Property="Background" Value="{StaticResource SidebarGradient}"/>
+        <Setter Property="CornerRadius" Value="18"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="BoxShadow" Value="0 20 50 0 #22000000"/>
+      </Style>
+
+      <!-- Product cards: colorful rounded rectangles with soft shadow -->
+      <Style Selector="Border.card">
+        <Setter Property="CornerRadius" Value="14"/>
+        <Setter Property="Padding" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource CardGradient}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BoxShadow" Value="0 12 30 0 #33000000"/>
+      </Style>
+
+      <!-- List items: space and slightly rounded to match screenshot -->
+      <Style Selector="ListBoxItem">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Margin" Value="6,8"/>
+        <Setter Property="Background" Value="Transparent"/>
+      </Style>
+
+      <Style Selector="ListBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+      </Style>
+
+      <!-- Buttons: default glassy small buttons -->
+      <Style Selector="Button">
+        <Setter Property="Background" Value="{StaticResource GlassOverlayBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource GlassBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="8,6"/>
+      </Style>
+
+      <!-- Accent (Add) button: green solid -->
+      <Style Selector="Button.accent">
+        <Setter Property="Background" Value="{StaticResource AccentGreenBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="14"/>
+        <Setter Property="Padding" Value="10,8"/>
+      </Style>
+
+      <!-- Menu buttons: large pill-shaped items for sidebar -->
+  <Style Selector="ToggleButton.menu">
+        <Setter Property="Background" Value="{StaticResource GlassOverlayBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+        <Setter Property="CornerRadius" Value="16"/>
+        <Setter Property="Padding" Value="12,10"/>
+        <Setter Property="Margin" Value="6"/>
+        <!-- make menu buttons uniform size and stretch to sidebar width -->
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="56"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="14"/>
+      </Style>
+
+      <Style Selector="ToggleButton.menu:checked">
+        <Setter Property="Background" Value="{StaticResource MenuSelectBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Opacity" Value="0.98"/>
+      </Style>
+
+      <Style Selector="Button.accent:pointerover /template/ ContentPresenter">
+        <Setter Property="Opacity" Value="0.95"/>
+      </Style>
+
+      <!-- Danger button: red solid small -->
+      <Style Selector="Button.danger">
+        <Setter Property="Background" Value="{StaticResource DangerRedBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="BorderThickness" Value="0"/>
+      </Style>
+
+      <!-- Headings and text tokens -->
+      <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+      </Style>
+
+</Styles>

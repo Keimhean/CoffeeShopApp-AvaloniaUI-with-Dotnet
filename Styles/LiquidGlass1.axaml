@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Lightweight resource-only backup of liquid glass colors/brushes -->
+  <Color x:Key="BrandPurple">#B7A2FF</Color>
+  <Color x:Key="BrandPurpleDark">#8E78F5</Color>
+  <Color x:Key="GlassBg">#80FFFFFF</Color>
+
+  <LinearGradientBrush x:Key="CardGradient" StartPoint="0,0" EndPoint="1,1">
+    <GradientStop Color="{StaticResource BrandPurple}" Offset="0"/>
+    <GradientStop Color="{StaticResource BrandPurpleDark}" Offset="1"/>
+  </LinearGradientBrush>
+
+</ResourceDictionary>
